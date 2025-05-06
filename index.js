@@ -1027,5 +1027,12 @@ app.get('/my-subjects', authMiddleware, async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+const PORT = process.env.PORT;       // احصل على المنفذ من متغيّر البيئة فقط
+if (!PORT) {
+  console.error("❌ ERROR: process.env.PORT is not defined");
+  process.exit(1);
+}
+
+app.listen(PORT, () => {
+  console.log(`API running on port ${PORT}`);
+});
