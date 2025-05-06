@@ -743,6 +743,18 @@ import fs from 'fs';
 
 dotenv.config();
 
+export const pool = createPool({
+  host:     process.env.DB_HOST,
+  port:     Number(process.env.DB_PORT),
+  user:     process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+});
+
+
+
+
+
 const app = express();
 app.use(cors());
 // للتعامل مع form-data (ملفات + حقول نصية)
